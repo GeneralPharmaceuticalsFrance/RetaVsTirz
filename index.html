@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Retatrutide vs Tirzepatide — General Pharmaceuticals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-deep: #030812;
+    --bg-panel: #0a1426;
+    --bg-panel-2: #0f1d36;
+    --border: rgba(120, 170, 230, 0.14);
+    --border-strong: rgba(120, 170, 230, 0.28);
+    --ink: #e6eefc;
+    --ink-dim: #8ea2c4;
+    --ink-faint: #51668a;
+    --brand: #2d7fd6;
+    --brand-bright: #4da6ff;
+    --cyan: #6ee6ff;
+    --retatrutide: #6ee6ff;
+    --tirzepatide: #b28bff;
+    --hair: rgba(255,255,255,0.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg-deep); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body {
+    background:
+      radial-gradient(ellipse 1200px 600px at 20% 0%, rgba(45,127,214,0.18), transparent 60%),
+      radial-gradient(ellipse 900px 500px at 80% 20%, rgba(110,230,255,0.08), transparent 60%),
+      var(--bg-deep);
+    min-height: 100vh;
+  }
+  .display { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Grid background pattern */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(120,170,230,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120,170,230,0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+  /* ===== NAV ===== */
+  nav.topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    background: rgba(3,8,18,0.6);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: linear-gradient(135deg, #4da6ff, #0a3a80);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    color: white; box-shadow: 0 4px 16px rgba(77,166,255,0.4);
+  }
+  .brand-text { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .brand-text .dim { color: var(--ink-dim); font-weight: 400; margin-left: 8px; }
+  .nav-links { display: flex; gap: 28px; font-size: 13px; color: var(--ink-dim); }
+  .nav-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-status { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--ink-dim); font-family: 'JetBrains Mono', monospace; }
+  .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+  }
+
+  /* ===== HERO ===== */
+  .hero { padding: 80px 0 60px; position: relative; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: rgba(77,166,255,0.06);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--brand-bright);
+    margin-bottom: 28px;
+  }
+  .eyebrow-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--brand-bright); }
+  h1.hero-title {
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.95;
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+  h1.hero-title .vs { color: var(--ink-faint); font-style: italic; font-weight: 300; }
+  h1.hero-title .r { color: var(--retatrutide); }
+  h1.hero-title .t { color: var(--tirzepatide); }
+  .hero-sub { font-size: 18px; color: var(--ink-dim); max-width: 520px; line-height: 1.6; margin-bottom: 36px; }
+  .hero-stats { display: flex; gap: 40px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .hero-stat .num { font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 500; letter-spacing: -0.02em; }
+  .hero-stat .lbl { font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+  .hero-img-wrap {
+    position: relative; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 30px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(77,166,255,0.1);
+    aspect-ratio: 1;
+  }
+  .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(3,8,18,0.4));
+    pointer-events: none;
+  }
+  .hero-img-tag {
+    position: absolute; top: 16px; left: 16px;
+    padding: 6px 12px; border-radius: 6px;
+    background: rgba(3,8,18,0.75); backdrop-filter: blur(10px);
+    border: 1px solid var(--border-strong);
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-dim);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* ===== MOLECULE TOGGLE ===== */
+  .mol-selector {
+    margin: 80px 0;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(15,29,54,0.6), rgba(10,20,38,0.3));
+    backdrop-filter: blur(20px);
+  }
+  .mol-selector-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+  .mol-selector-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; }
+  .mol-selector-hint { font-size: 12px; color: var(--ink-dim); }
+  .toggle-ab {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4px; padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(3,8,18,0.6);
+    position: relative;
+  }
+  .toggle-btn {
+    padding: 20px 24px;
+    border: none; background: transparent;
+    color: var(--ink-dim); font-family: inherit;
+    cursor: pointer; border-radius: 10px;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+  }
+  .toggle-btn .tb-name { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 500; letter-spacing: -0.01em; display: block; }
+  .toggle-btn .tb-sub { font-size: 12px; margin-top: 4px; color: inherit; opacity: 0.7; font-family: 'JetBrains Mono', monospace; }
+  .toggle-btn.active[data-mol="r"] {
+    background: rgba(110,230,255,0.08);
+    color: var(--retatrutide);
+    box-shadow: inset 0 0 0 1px rgba(110,230,255,0.3);
+  }
+  .toggle-btn.active[data-mol="t"] {
+    background: rgba(178,139,255,0.08);
+    color: var(--tirzepatide);
+    box-shadow: inset 0 0 0 1px rgba(178,139,255,0.3);
+  }
+  .mol-detail { margin-top: 28px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .mol-card {
+    padding: 20px; border: 1px solid var(--border); border-radius: 12px;
+    background: rgba(3,8,18,0.4);
+  }
+  .mol-card .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; }
+  .mol-card .val { font-family: 'Space Grotesk', sans-serif; font-size: 20px; margin-top: 8px; font-weight: 500; transition: color 0.3s; }
+  .mol-card .desc { font-size: 12px; color: var(--ink-dim); margin-top: 6px; line-height: 1.4; }
+
+  /* ===== SECTION ===== */
+  section.bloc { padding: 80px 0; position: relative; }
+  .section-head { margin-bottom: 48px; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: end; }
+  .section-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.2em; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 500; letter-spacing: -0.02em; line-height: 1; max-width: 700px; }
+  .section-desc { font-size: 15px; color: var(--ink-dim); max-width: 420px; justify-self: end; text-align: right; line-height: 1.5; }
+
+  /* ===== MECANISME ===== */
+  .mech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .mech-card {
+    padding: 32px; border: 1px solid var(--border); border-radius: 16px;
+    background: linear-gradient(180deg, rgba(15,29,54,0.4), rgba(10,20,38,0.2));
+    position: relative; overflow: hidden;
+  }
+  .mech-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    opacity: 0.3;
+  }
+  .mech-card.r { color: var(--retatrutide); }
+  .mech-card.t { color: var(--tirzepatide); }
+  .mech-card-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; margin-bottom: 6px; font-weight: 500; }
+  .mech-card-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); margin-bottom: 28px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .receptors { display: flex; flex-direction: column; gap: 12px; }
+  .receptor {
+    display: grid; grid-template-columns: 80px 1fr auto;
+    align-items: center; gap: 16px;
+    padding: 14px 16px;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: rgba(3,8,18,0.5);
+    transition: all 0.3s;
+  }
+  .receptor.active {
+    border-color: currentColor;
+    background: rgba(110,230,255,0.05);
+  }
+  .mech-card.t .receptor.active { background: rgba(178,139,255,0.05); }
+  .receptor.inactive { opacity: 0.3; }
+  .receptor-code { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: currentColor; }
+  .receptor-name { font-size: 13px; color: var(--ink); }
+  .receptor-name .sub { display: block; font-size: 11px; color: var(--ink-dim); margin-top: 2px; }
+  .receptor-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .receptor.active .receptor-dot { background: currentColor; box-shadow: 0 0 12px currentColor; }
+  .receptor.inactive .receptor-dot { background: var(--ink-faint); }
+  .mech-summary { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--ink-dim); line-height: 1.55; }
+  .mech-summary strong { color: var(--ink); font-weight: 500; }
+
+  /* ===== EFFICACY CHART ===== */
+  .chart-wrap {
+    padding: 32px; border: 1px solid var(--border); border-radius: 20px;
+    background: linear-gradient(180deg, rgba(15,29,54,0.4), rgba(10,20,38,0.2));
+  }
+  .chart-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; flex-wrap: wrap; gap: 20px; }
+  .chart-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; }
+  .chart-trials { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); margin-top: 6px; letter-spacing: 0.05em; }
+  .legend { display: flex; gap: 20px; font-size: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; color: var(--ink-dim); }
+  .legend-swatch { width: 20px; height: 3px; border-radius: 2px; }
+  .chart-svg-wrap { position: relative; }
+  .chart-svg { width: 100%; height: auto; }
+  .chart-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+  .chart-stat {
+    padding: 18px; border: 1px solid var(--border); border-radius: 12px;
+    background: rgba(3,8,18,0.5);
+  }
+  .chart-stat .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; }
+  .chart-stat .row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+  .chart-stat .row .v { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 500; }
+  .chart-stat .row.r .v { color: var(--retatrutide); }
+  .chart-stat .row.t .v { color: var(--tirzepatide); }
+  .chart-stat .row .k { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); text-transform: uppercase; }
+
+  /* ===== GLYCEMIE ===== */
+  .gly-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .gly-card {
+    padding: 36px; border: 1px solid var(--border); border-radius: 20px;
+    background: linear-gradient(180deg, rgba(15,29,54,0.4), rgba(10,20,38,0.2));
+    position: relative;
+  }
+  .gly-card .mol { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+  .gly-card.r .mol { color: var(--retatrutide); }
+  .gly-card.t .mol { color: var(--tirzepatide); }
+  .gly-big { font-family: 'Space Grotesk', sans-serif; font-size: 72px; font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin: 16px 0 8px; }
+  .gly-big .unit { font-size: 28px; color: var(--ink-dim); margin-left: 6px; font-weight: 400; }
+  .gly-cap { font-size: 13px; color: var(--ink-dim); margin-bottom: 24px; }
+  .gly-bar-wrap { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 20px; }
+  .gly-bar { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .gly-card.r .gly-bar { background: linear-gradient(90deg, var(--retatrutide), #4da6ff); }
+  .gly-card.t .gly-bar { background: linear-gradient(90deg, var(--tirzepatide), #8b5cf6); }
+  .gly-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .gly-meta .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; }
+  .gly-meta .val { font-size: 14px; color: var(--ink); margin-top: 4px; }
+
+  /* ===== DOSE SLIDER ===== */
+  .dose-panel {
+    padding: 40px; border: 1px solid var(--border); border-radius: 20px;
+    background: linear-gradient(180deg, rgba(15,29,54,0.5), rgba(10,20,38,0.2));
+  }
+  .dose-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; flex-wrap: wrap; gap: 16px; }
+  .dose-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; }
+  .dose-trial { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); margin-top: 4px; }
+  .dose-current {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    padding: 10px 18px; border-radius: 10px;
+    border: 1px solid var(--border-strong);
+    background: rgba(77,166,255,0.06);
+  }
+  .dose-current .n { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 500; color: var(--brand-bright); }
+  .dose-current .u { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-dim); }
+
+  .dose-slider-wrap { position: relative; padding: 20px 0 28px; }
+  .dose-track {
+    height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px;
+    position: relative;
+  }
+  .dose-fill {
+    position: absolute; inset: 0; border-radius: 2px;
+    background: linear-gradient(90deg, var(--retatrutide), var(--tirzepatide));
+    width: 50%;
+    transition: width 0.2s;
+  }
+  .dose-ticks { display: flex; justify-content: space-between; margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); }
+  .dose-tick { cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: all 0.2s; }
+  .dose-tick:hover { color: var(--ink); background: rgba(255,255,255,0.04); }
+  .dose-tick.active { color: var(--brand-bright); background: rgba(77,166,255,0.1); }
+  input[type="range"].dose-input {
+    position: absolute; inset: 16px 0 0; width: 100%; height: 32px;
+    -webkit-appearance: none; appearance: none; background: transparent;
+    cursor: pointer;
+  }
+  input[type="range"].dose-input::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: white;
+    border: 3px solid var(--brand-bright);
+    box-shadow: 0 4px 20px rgba(77,166,255,0.5);
+    cursor: grab;
+  }
+  input[type="range"].dose-input::-moz-range-thumb {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: white;
+    border: 3px solid var(--brand-bright);
+    box-shadow: 0 4px 20px rgba(77,166,255,0.5);
+    cursor: grab;
+  }
+
+  .dose-projections { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .dose-proj {
+    padding: 24px; border: 1px solid var(--border); border-radius: 14px;
+    background: rgba(3,8,18,0.5);
+  }
+  .dose-proj .name { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+  .dose-proj.r .name { color: var(--retatrutide); }
+  .dose-proj.t .name { color: var(--tirzepatide); }
+  .dose-proj .loss { font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 500; letter-spacing: -0.03em; margin: 12px 0 4px; line-height: 1; transition: color 0.3s; }
+  .dose-proj.r .loss { color: var(--retatrutide); }
+  .dose-proj.t .loss { color: var(--tirzepatide); }
+  .dose-proj .loss .pc { font-size: 24px; color: var(--ink-dim); font-weight: 400; }
+  .dose-proj .kg { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-dim); }
+  .dose-proj .note { font-size: 11px; color: var(--ink-faint); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-style: italic; }
+
+  /* ===== POSOLOGIE ===== */
+  .poso-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .poso-card {
+    padding: 32px; border: 1px solid var(--border); border-radius: 16px;
+    background: linear-gradient(180deg, rgba(15,29,54,0.4), rgba(10,20,38,0.2));
+  }
+  .poso-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+  .poso-name { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; }
+  .poso-card.r .poso-name { color: var(--retatrutide); }
+  .poso-card.t .poso-name { color: var(--tirzepatide); }
+  .poso-freq { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+  .titration { position: relative; padding: 8px 0; }
+  .titration-line {
+    position: absolute; left: 10px; top: 16px; bottom: 16px;
+    width: 1px; background: rgba(120,170,230,0.2);
+  }
+  .step {
+    display: grid; grid-template-columns: 28px 60px 1fr auto;
+    gap: 12px; align-items: center;
+    padding: 10px 0;
+    position: relative;
+  }
+  .step-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--ink-faint); margin-left: 5px;
+    position: relative; z-index: 1;
+  }
+  .poso-card.r .step-dot { background: var(--retatrutide); box-shadow: 0 0 0 3px rgba(110,230,255,0.15); }
+  .poso-card.t .step-dot { background: var(--tirzepatide); box-shadow: 0 0 0 3px rgba(178,139,255,0.15); }
+  .step-week { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); }
+  .step-dose { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; }
+  .step-tag { font-size: 11px; color: var(--ink-dim); font-family: 'JetBrains Mono', monospace; padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; }
+
+  /* ===== EFFETS SECONDAIRES ===== */
+  .se-panel {
+    padding: 40px; border: 1px solid var(--border); border-radius: 20px;
+    background: linear-gradient(180deg, rgba(15,29,54,0.4), rgba(10,20,38,0.2));
+  }
+  .se-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
+  .se-rows { display: flex; flex-direction: column; gap: 14px; }
+  .se-row { display: grid; grid-template-columns: 220px 1fr 1fr 80px; gap: 20px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--hair); }
+  .se-row:last-child { border-bottom: none; }
+  .se-label { font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+  .se-label .cat { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); text-transform: uppercase; }
+  .se-bar-wrap { position: relative; height: 8px; background: rgba(255,255,255,0.04); border-radius: 4px; overflow: hidden; }
+  .se-bar { height: 100%; border-radius: 4px; transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .se-bar.r { background: linear-gradient(90deg, var(--retatrutide), transparent); opacity: 0.9; }
+  .se-bar.t { background: linear-gradient(90deg, var(--tirzepatide), transparent); opacity: 0.9; }
+  .se-note { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-dim); text-align: right; }
+
+  /* ===== TABLEAU FINAL ===== */
+  .final-table {
+    border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+    background: linear-gradient(180deg, rgba(15,29,54,0.4), rgba(10,20,38,0.2));
+  }
+  .final-row {
+    display: grid; grid-template-columns: 200px 1fr 1fr;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--hair);
+    font-size: 14px;
+    align-items: center;
+  }
+  .final-row:last-child { border-bottom: none; }
+  .final-row.header {
+    background: rgba(3,8,18,0.6);
+    font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500;
+    padding: 28px;
+  }
+  .final-row.header .r { color: var(--retatrutide); }
+  .final-row.header .t { color: var(--tirzepatide); }
+  .final-row .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; }
+  .final-row .v { color: var(--ink); }
+  .final-row .v .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-left: 6px; font-family: 'JetBrains Mono', monospace; }
+  .tag-approved { background: rgba(74,222,128,0.12); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
+  .tag-investigational { background: rgba(250,204,21,0.1); color: #facc15; border: 1px solid rgba(250,204,21,0.3); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 120px; padding: 60px 0 40px;
+    border-top: 1px solid var(--border);
+    background: rgba(3,8,18,0.4);
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  .footer-brand .txt { margin-top: 16px; color: var(--ink-dim); font-size: 13px; line-height: 1.6; max-width: 380px; }
+  .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; font-weight: 500; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { color: var(--ink-dim); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-bottom {
+    margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid var(--hair);
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint);
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid, .mech-grid, .gly-grid, .poso-grid, .footer-grid { grid-template-columns: 1fr; }
+    .mol-detail, .chart-stats { grid-template-columns: repeat(2, 1fr); }
+    .dose-projections { grid-template-columns: 1fr; }
+    .final-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 20px; }
+    .section-head { grid-template-columns: 1fr; gap: 16px; }
+    .section-desc { text-align: left; justify-self: start; }
+    .se-row { grid-template-columns: 1fr; gap: 8px; }
+    .se-note { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="brand">
+    <div class="brand-mark">GP</div>
+    <div class="brand-text">General Pharmaceuticals<span class="dim">Research peptides</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#mecanisme">Mécanisme</a>
+    <a href="#efficacite">Efficacité</a>
+    <a href="#glycemie">Glycémie</a>
+    <a href="#posologie">Posologie</a>
+    <a href="#effets">Effets</a>
+  </div>
+  <div class="nav-status"><span class="pulse"></span> DATA • TRIUMPH / SURMOUNT</div>
+</nav>
+
+<!-- ========================= HERO ========================= -->
+<div class="container">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> COMPARATIF SCIENTIFIQUE · 2026</div>
+        <h1 class="hero-title display">
+          <span class="r">Retatrutide</span><br />
+          <span class="vs">vs.</span><br />
+          <span class="t">Tirzepatide</span>
+        </h1>
+        <p class="hero-sub">
+          Deux générations de peptides incrétino-mimétiques. L'un redéfinit le standard de la perte de poids, l'autre établit déjà un nouveau paradigme clinique.
+          Comparaison côte-à-côte des données issues des essais pivots.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num display">−24,2<span style="color:var(--ink-dim);font-size:20px">%</span></div>
+            <div class="lbl">Retatrutide · 48 sem</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num display">−22,5<span style="color:var(--ink-dim);font-size:20px">%</span></div>
+            <div class="lbl">Tirzepatide · 72 sem</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num display">3<span style="color:var(--ink-dim);font-size:20px">vs 2</span></div>
+            <div class="lbl">Récepteurs ciblés</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="assets/hero-vials.png" alt="Flacons Retatrutide et Tirzepatide General Pharmaceuticals" />
+        <div class="hero-img-overlay"></div>
+        <div class="hero-img-tag">GP · 10mg/vial · research grade</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================= MOLECULE TOGGLE ========================= -->
+<div class="container">
+  <div class="mol-selector">
+    <div class="mol-selector-head">
+      <div class="mol-selector-label">_ SELECTION MOLÉCULE</div>
+      <div class="mol-selector-hint">Cliquer pour basculer · <span class="mono" style="color:var(--brand-bright)">Tab</span> au clavier</div>
+    </div>
+    <div class="toggle-ab" id="molToggle">
+      <button class="toggle-btn active" data-mol="r">
+        <span class="tb-name">Retatrutide</span>
+        <span class="tb-sub">LY3437943 · GIP / GLP-1 / GCG</span>
+      </button>
+      <button class="toggle-btn" data-mol="t">
+        <span class="tb-name">Tirzepatide</span>
+        <span class="tb-sub">LY3298176 · GIP / GLP-1</span>
+      </button>
+    </div>
+    <div class="mol-detail" id="molDetail">
+      <div class="mol-card">
+        <div class="lbl">Classe</div>
+        <div class="val" data-field="class">Triple agoniste</div>
+        <div class="desc" data-field="classDesc">Premier-en-classe</div>
+      </div>
+      <div class="mol-card">
+        <div class="lbl">Masse molaire</div>
+        <div class="val" data-field="mass">≈ 4,9 kDa</div>
+        <div class="desc" data-field="massDesc">Peptide synthétique</div>
+      </div>
+      <div class="mol-card">
+        <div class="lbl">Administration</div>
+        <div class="val" data-field="admin">Sous-cutanée</div>
+        <div class="desc" data-field="adminDesc">1× par semaine</div>
+      </div>
+      <div class="mol-card">
+        <div class="lbl">Statut (2026)</div>
+        <div class="val" data-field="status">Phase 3</div>
+        <div class="desc" data-field="statusDesc">TRIUMPH program · Eli Lilly</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================= MECANISME ========================= -->
+<section class="bloc" id="mecanisme">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">01 / MÉCANISME D'ACTION</div>
+        <h2 class="section-title">Une cible.<br />Deux, puis trois récepteurs.</h2>
+      </div>
+      <p class="section-desc">Les incrétines sont des hormones qui régulent l'appétit, l'insuline et la dépense énergétique. Le tirzepatide active 2 récepteurs. Le retatrutide en ajoute un 3e — le glucagon — pour amplifier la combustion des graisses.</p>
+    </div>
+
+    <div class="mech-grid">
+      <div class="mech-card r">
+        <div class="mech-card-title">Retatrutide</div>
+        <div class="mech-card-sub">Triple agoniste · GIP / GLP-1 / GCG</div>
+        <div class="receptors">
+          <div class="receptor active">
+            <div class="receptor-code">GIP-R</div>
+            <div class="receptor-name">Polypeptide insulinotrope<span class="sub">Libération d'insuline post-prandiale</span></div>
+            <div class="receptor-dot"></div>
+          </div>
+          <div class="receptor active">
+            <div class="receptor-code">GLP-1R</div>
+            <div class="receptor-name">Glucagon-like peptide-1<span class="sub">Satiété · vidange gastrique ralentie</span></div>
+            <div class="receptor-dot"></div>
+          </div>
+          <div class="receptor active">
+            <div class="receptor-code">GCG-R</div>
+            <div class="receptor-name">Récepteur du glucagon<span class="sub">↑ Dépense énergétique · ↑ lipolyse</span></div>
+            <div class="receptor-dot"></div>
+          </div>
+        </div>
+        <div class="mech-summary">
+          <strong>Avantage mécanistique :</strong> l'activation du récepteur glucagon ajoute une composante de dépense énergétique directe, expliquant la magnitude inédite de perte de poids observée en phase 2.
+        </div>
+      </div>
+
+      <div class="mech-card t">
+        <div class="mech-card-title">Tirzepatide</div>
+        <div class="mech-card-sub">Double agoniste · GIP / GLP-1</div>
+        <div class="receptors">
+          <div class="receptor active">
+            <div class="receptor-code">GIP-R</div>
+            <div class="receptor-name">Polypeptide insulinotrope<span class="sub">Libération d'insuline post-prandiale</span></div>
+            <div class="receptor-dot"></div>
+          </div>
+          <div class="receptor active">
+            <div class="receptor-code">GLP-1R</div>
+            <div class="receptor-name">Glucagon-like peptide-1<span class="sub">Satiété · vidange gastrique ralentie</span></div>
+            <div class="receptor-dot"></div>
+          </div>
+          <div class="receptor inactive">
+            <div class="receptor-code">GCG-R</div>
+            <div class="receptor-name">Récepteur du glucagon<span class="sub">Non ciblé</span></div>
+            <div class="receptor-dot"></div>
+          </div>
+        </div>
+        <div class="mech-summary">
+          <strong>Synergie double :</strong> l'activation conjointe GIP/GLP-1 produit une action sur la satiété et la sensibilité insulinique. Profil validé en phase 3 et approuvé par la FDA/EMA.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= EFFICACITE ========================= -->
+<section class="bloc" id="efficacite">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">02 / EFFICACITÉ · PERTE DE POIDS</div>
+        <h2 class="section-title">Courbes des essais pivots.</h2>
+      </div>
+      <p class="section-desc">Retatrutide 12 mg sur 48 semaines (TRIUMPH phase 2, NEJM 2023). Tirzepatide 15 mg sur 72 semaines (SURMOUNT-1, NEJM 2022). Moyennes de perte de poids par rapport au poids initial.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-head">
+        <div>
+          <div class="chart-title">Évolution du poids corporel (%)</div>
+          <div class="chart-trials">TRIUMPH OBESITY PHASE 2 · SURMOUNT-1 PHASE 3 · DOSES MAX</div>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><span class="legend-swatch" style="background:var(--retatrutide)"></span> Retatrutide 12mg</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:var(--tirzepatide)"></span> Tirzepatide 15mg</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:var(--ink-faint)"></span> Placebo</div>
+        </div>
+      </div>
+
+      <div class="chart-svg-wrap">
+        <svg class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="none">
+          <!-- grid -->
+          <defs>
+            <linearGradient id="retGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6ee6ff" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#6ee6ff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="tirGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#b28bff" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#b28bff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <g stroke="rgba(120,170,230,0.08)" stroke-width="1">
+            <line x1="60" y1="40" x2="860" y2="40"/>
+            <line x1="60" y1="120" x2="860" y2="120"/>
+            <line x1="60" y1="200" x2="860" y2="200"/>
+            <line x1="60" y1="280" x2="860" y2="280"/>
+            <line x1="60" y1="360" x2="860" y2="360"/>
+          </g>
+
+          <!-- Y labels (% weight change) -->
+          <g font-family="JetBrains Mono" font-size="10" fill="#51668a">
+            <text x="45" y="44" text-anchor="end">0%</text>
+            <text x="45" y="124" text-anchor="end">−7%</text>
+            <text x="45" y="204" text-anchor="end">−14%</text>
+            <text x="45" y="284" text-anchor="end">−21%</text>
+            <text x="45" y="364" text-anchor="end">−28%</text>
+          </g>
+
+          <!-- X labels (weeks) -->
+          <g font-family="JetBrains Mono" font-size="10" fill="#51668a">
+            <text x="60" y="390" text-anchor="middle">0</text>
+            <text x="220" y="390" text-anchor="middle">16</text>
+            <text x="380" y="390" text-anchor="middle">32</text>
+            <text x="540" y="390" text-anchor="middle">48</text>
+            <text x="700" y="390" text-anchor="middle">60</text>
+            <text x="860" y="390" text-anchor="middle">72</text>
+          </g>
+          <text x="460" y="410" font-family="JetBrains Mono" font-size="10" fill="#51668a" text-anchor="middle">SEMAINES DE TRAITEMENT</text>
+
+          <!-- End of trial markers -->
+          <g>
+            <line x1="540" y1="40" x2="540" y2="360" stroke="#6ee6ff" stroke-width="1" stroke-dasharray="2,4" opacity="0.4"/>
+            <line x1="860" y1="40" x2="860" y2="360" stroke="#b28bff" stroke-width="1" stroke-dasharray="2,4" opacity="0.4"/>
+          </g>
+
+          <!-- Placebo line (very slight decline ~2%) -->
+          <path id="plac-path"
+            d="M 60 40
+               L 220 46
+               L 380 52
+               L 540 57
+               L 700 62
+               L 860 63"
+            fill="none" stroke="#51668a" stroke-width="2" stroke-dasharray="4,4" opacity="0.7"
+            stroke-dasharray="1200" stroke-dashoffset="1200">
+            <animate attributeName="stroke-dashoffset" from="1200" to="0" dur="1.6s" fill="freeze"/>
+          </path>
+
+          <!-- Tirzepatide 15mg curve: reaches −22.5% (≈ y=297) at week 72 (x=860)  -->
+          <!-- Area -->
+          <path id="tir-area"
+            d="M 60 40
+               C 140 40, 180 80, 220 130
+               S 340 240, 380 265
+               S 500 290, 540 293
+               S 700 296, 780 296
+               L 860 297
+               L 860 360 L 60 360 Z"
+            fill="url(#tirGrad)" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.8s" begin="0.6s" fill="freeze"/>
+          </path>
+          <path id="tir-path"
+            d="M 60 40
+               C 140 40, 180 80, 220 130
+               S 340 240, 380 265
+               S 500 290, 540 293
+               S 700 296, 780 296
+               L 860 297"
+            fill="none" stroke="#b28bff" stroke-width="2.5"
+            stroke-dasharray="1300" stroke-dashoffset="1300">
+            <animate attributeName="stroke-dashoffset" from="1300" to="0" dur="1.8s" begin="0.2s" fill="freeze"/>
+          </path>
+          <circle cx="860" cy="297" r="5" fill="#b28bff" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2s" fill="freeze"/>
+          </circle>
+          <circle cx="860" cy="297" r="10" fill="none" stroke="#b28bff" stroke-width="1" opacity="0">
+            <animate attributeName="opacity" from="0" to="0.4" dur="0.3s" begin="2s" fill="freeze"/>
+            <animate attributeName="r" from="5" to="16" dur="1.5s" begin="2s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Retatrutide 12mg curve: reaches −24.2% (≈ y=316) at week 48 (x=540) -->
+          <path id="ret-area"
+            d="M 60 40
+               C 140 40, 160 70, 220 140
+               S 340 255, 380 285
+               S 500 312, 540 316
+               L 540 360 L 60 360 Z"
+            fill="url(#retGrad)" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.8s" begin="0.6s" fill="freeze"/>
+          </path>
+          <path id="ret-path"
+            d="M 60 40
+               C 140 40, 160 70, 220 140
+               S 340 255, 380 285
+               S 500 312, 540 316"
+            fill="none" stroke="#6ee6ff" stroke-width="2.5"
+            stroke-dasharray="900" stroke-dashoffset="900">
+            <animate attributeName="stroke-dashoffset" from="900" to="0" dur="1.6s" begin="0.2s" fill="freeze"/>
+          </path>
+          <circle cx="540" cy="316" r="5" fill="#6ee6ff" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.8s" fill="freeze"/>
+          </circle>
+          <circle cx="540" cy="316" r="10" fill="none" stroke="#6ee6ff" stroke-width="1" opacity="0">
+            <animate attributeName="opacity" from="0" to="0.4" dur="0.3s" begin="1.8s" fill="freeze"/>
+            <animate attributeName="r" from="5" to="16" dur="1.5s" begin="1.8s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- End labels -->
+          <g font-family="Space Grotesk" font-size="14" font-weight="500" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.2s" fill="freeze"/>
+            <text x="548" y="320" fill="#6ee6ff">−24,2%</text>
+            <text x="548" y="336" fill="#51668a" font-size="10" font-family="JetBrains Mono">48 sem · FIN ÉTUDE</text>
+            <text x="780" y="290" fill="#b28bff" text-anchor="end">−22,5%</text>
+            <text x="780" y="306" fill="#51668a" font-size="10" font-family="JetBrains Mono" text-anchor="end">72 sem · FIN ÉTUDE</text>
+            <text x="790" y="75" fill="#51668a" font-size="10" font-family="JetBrains Mono">Placebo −2,1%</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="chart-stats">
+        <div class="chart-stat">
+          <div class="lbl">≥ 5% de perte</div>
+          <div class="row r"><span class="v">100%</span><span class="k">RET 12mg</span></div>
+          <div class="row t"><span class="v" style="font-size:20px">91%</span><span class="k">TIR 15mg</span></div>
+        </div>
+        <div class="chart-stat">
+          <div class="lbl">≥ 15% de perte</div>
+          <div class="row r"><span class="v">83%</span><span class="k">RET 12mg</span></div>
+          <div class="row t"><span class="v" style="font-size:20px">78%</span><span class="k">TIR 15mg</span></div>
+        </div>
+        <div class="chart-stat">
+          <div class="lbl">≥ 20% de perte</div>
+          <div class="row r"><span class="v">63%</span><span class="k">RET 12mg</span></div>
+          <div class="row t"><span class="v" style="font-size:20px">63%</span><span class="k">TIR 15mg</span></div>
+        </div>
+        <div class="chart-stat">
+          <div class="lbl">Plateau atteint ?</div>
+          <div class="row r"><span class="v" style="font-size:18px">Non</span><span class="k">à 48 sem</span></div>
+          <div class="row t"><span class="v" style="font-size:18px">Oui</span><span class="k">à 72 sem</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= GLYCEMIE ========================= -->
+<section class="bloc" id="glycemie">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">03 / CONTRÔLE GLYCÉMIQUE</div>
+        <h2 class="section-title">Réduction de l'HbA1c.</h2>
+      </div>
+      <p class="section-desc">Réduction moyenne de l'hémoglobine glyquée chez les patients avec diabète de type 2 à la dose maximale. Plus la valeur est élevée (en négatif), meilleur est le contrôle.</p>
+    </div>
+
+    <div class="gly-grid">
+      <div class="gly-card r">
+        <div class="mol">RETATRUTIDE · 12mg · 36 SEM</div>
+        <div class="gly-big display">−2,02<span class="unit">%</span></div>
+        <div class="gly-cap">Phase 2 type 2 diabetes · The Lancet 2023</div>
+        <div class="gly-bar-wrap"><div class="gly-bar" style="width: 97%"></div></div>
+        <div class="gly-meta">
+          <div>
+            <div class="lbl">Hypoglycémies sévères</div>
+            <div class="val">Aucune rapportée</div>
+          </div>
+          <div>
+            <div class="lbl">Glycémie à jeun</div>
+            <div class="val">↓ significative</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gly-card t">
+        <div class="mol">TIRZEPATIDE · 15mg · 72 SEM</div>
+        <div class="gly-big display">−2,08<span class="unit">%</span></div>
+        <div class="gly-cap">SURMOUNT-2 · The Lancet 2023</div>
+        <div class="gly-bar-wrap"><div class="gly-bar" style="width: 100%"></div></div>
+        <div class="gly-meta">
+          <div>
+            <div class="lbl">Hypoglycémies niveau 2</div>
+            <div class="val">5% (vs 1% placebo)</div>
+          </div>
+          <div>
+            <div class="lbl">Indication approuvée</div>
+            <div class="val">DT2 + obésité</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= DOSE SLIDER ========================= -->
+<section class="bloc">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">04 / SIMULATEUR DE DOSE</div>
+        <h2 class="section-title">Faites glisser pour projeter.</h2>
+      </div>
+      <p class="section-desc">Perte de poids moyenne attendue selon la dose hebdomadaire, basée sur les données publiées des essais. Calculs illustratifs à partir des moyennes observées.</p>
+    </div>
+
+    <div class="dose-panel">
+      <div class="dose-head">
+        <div>
+          <div class="dose-title">Réponse dose-dépendante</div>
+          <div class="dose-trial">DONNÉES PHASE 2 OBÉSITÉ (NEJM 2023) · SURMOUNT-1 (NEJM 2022)</div>
+        </div>
+        <div class="dose-current">
+          <span class="n" id="doseValue">4</span>
+          <span class="u">mg / semaine</span>
+        </div>
+      </div>
+
+      <div class="dose-slider-wrap">
+        <div class="dose-track">
+          <div class="dose-fill" id="doseFill" style="width: 30%"></div>
+        </div>
+        <input type="range" class="dose-input" id="doseSlider" min="0" max="4" step="1" value="1" />
+        <div class="dose-ticks" id="doseTicks">
+          <div class="dose-tick" data-idx="0">1 mg</div>
+          <div class="dose-tick active" data-idx="1">4 mg</div>
+          <div class="dose-tick" data-idx="2">5 mg</div>
+          <div class="dose-tick" data-idx="3">8-10 mg</div>
+          <div class="dose-tick" data-idx="4">12-15 mg</div>
+        </div>
+      </div>
+
+      <div class="dose-projections">
+        <div class="dose-proj r">
+          <div class="name">_ RETATRUTIDE · 48 SEMAINES</div>
+          <div class="loss" id="lossR"><span id="lossRnum">17,1</span><span class="pc">%</span></div>
+          <div class="kg" id="lossRkg">≈ 18 kg sur 105 kg initial</div>
+          <div class="note" id="noteR">Dose 4 mg · LS mean NEJM 2023</div>
+        </div>
+        <div class="dose-proj t">
+          <div class="name">_ TIRZEPATIDE · 72 SEMAINES</div>
+          <div class="loss" id="lossT"><span id="lossTnum">—</span><span class="pc"></span></div>
+          <div class="kg" id="lossTkg">Dose non évaluée dans SURMOUNT-1</div>
+          <div class="note" id="noteT">Tirzepatide évalué à 5 / 10 / 15 mg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= POSOLOGIE ========================= -->
+<section class="bloc" id="posologie">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">05 / POSOLOGIE & TITRATION</div>
+        <h2 class="section-title">Schémas d'escalade.</h2>
+      </div>
+      <p class="section-desc">La dose est augmentée progressivement pour améliorer la tolérance digestive. Injection hebdomadaire sous-cutanée dans les deux cas.</p>
+    </div>
+
+    <div class="poso-grid">
+      <div class="poso-card r">
+        <div class="poso-head">
+          <div class="poso-name">Retatrutide</div>
+          <div class="poso-freq">1× / SEMAINE · SC</div>
+        </div>
+        <div class="titration">
+          <div class="titration-line"></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 1-4</div><div class="step-dose">2 mg</div><div class="step-tag">Initiation</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 5-8</div><div class="step-dose">4 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 9-12</div><div class="step-dose">6 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 13-16</div><div class="step-dose">8 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 17-20</div><div class="step-dose">10 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 21+</div><div class="step-dose">12 mg</div><div class="step-tag">Entretien</div></div>
+        </div>
+      </div>
+
+      <div class="poso-card t">
+        <div class="poso-head">
+          <div class="poso-name">Tirzepatide</div>
+          <div class="poso-freq">1× / SEMAINE · SC</div>
+        </div>
+        <div class="titration">
+          <div class="titration-line"></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 1-4</div><div class="step-dose">2,5 mg</div><div class="step-tag">Initiation</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 5-8</div><div class="step-dose">5 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 9-12</div><div class="step-dose">7,5 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 13-16</div><div class="step-dose">10 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 17-20</div><div class="step-dose">12,5 mg</div><div class="step-tag">Titration</div></div>
+          <div class="step"><div class="step-dot"></div><div class="step-week">S 21+</div><div class="step-dose">15 mg</div><div class="step-tag">Entretien</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= EFFETS SECONDAIRES ========================= -->
+<section class="bloc" id="effets">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">06 / EFFETS SECONDAIRES</div>
+        <h2 class="section-title">Profil de tolérance.</h2>
+      </div>
+      <p class="section-desc">Les effets indésirables sont majoritairement digestifs, dose-dépendants, légers à modérés, transitoires pendant la phase de titration. Fréquences approximatives à la dose maximale.</p>
+    </div>
+
+    <div class="se-panel">
+      <div class="se-head">
+        <div style="font-family:'Space Grotesk';font-size:16px">Effets indésirables les plus fréquents</div>
+        <div style="font-family:'JetBrains Mono';font-size:11px;color:var(--ink-faint)">% PARTICIPANTS · DOSE MAX</div>
+      </div>
+
+      <div class="se-rows">
+        <!-- Nausées -->
+        <div class="se-row">
+          <div class="se-label"><span class="cat">GI</span> Nausées</div>
+          <div class="se-bar-wrap"><div class="se-bar r" style="width: 43%"></div></div>
+          <div class="se-bar-wrap"><div class="se-bar t" style="width: 29%"></div></div>
+          <div class="se-note">43% · 29%</div>
+        </div>
+        <!-- Diarrhée -->
+        <div class="se-row">
+          <div class="se-label"><span class="cat">GI</span> Diarrhée</div>
+          <div class="se-bar-wrap"><div class="se-bar r" style="width: 27%"></div></div>
+          <div class="se-bar-wrap"><div class="se-bar t" style="width: 23%"></div></div>
+          <div class="se-note">27% · 23%</div>
+        </div>
+        <!-- Constipation -->
+        <div class="se-row">
+          <div class="se-label"><span class="cat">GI</span> Constipation</div>
+          <div class="se-bar-wrap"><div class="se-bar r" style="width: 15%"></div></div>
+          <div class="se-bar-wrap"><div class="se-bar t" style="width: 17%"></div></div>
+          <div class="se-note">15% · 17%</div>
+        </div>
+        <!-- Vomissements -->
+        <div class="se-row">
+          <div class="se-label"><span class="cat">GI</span> Vomissements</div>
+          <div class="se-bar-wrap"><div class="se-bar r" style="width: 19%"></div></div>
+          <div class="se-bar-wrap"><div class="se-bar t" style="width: 13%"></div></div>
+          <div class="se-note">19% · 13%</div>
+        </div>
+        <!-- FC -->
+        <div class="se-row">
+          <div class="se-label"><span class="cat">CV</span> ↑ Fréquence cardiaque</div>
+          <div class="se-bar-wrap"><div class="se-bar r" style="width: 35%"></div></div>
+          <div class="se-bar-wrap"><div class="se-bar t" style="width: 15%"></div></div>
+          <div class="se-note">pic S24, déclin</div>
+        </div>
+        <!-- Arrêts -->
+        <div class="se-row">
+          <div class="se-label"><span class="cat">—</span> Arrêts pour effets indésirables</div>
+          <div class="se-bar-wrap"><div class="se-bar r" style="width: 14%"></div></div>
+          <div class="se-bar-wrap"><div class="se-bar t" style="width: 7%"></div></div>
+          <div class="se-note">14% · 7%</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 28px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: rgba(3,8,18,0.4); font-size: 13px; color: var(--ink-dim); line-height: 1.6;">
+        <strong style="color:var(--ink)">Mitigation :</strong> la titration progressive (démarrage à 2 mg vs 4 mg pour le rétatrutide) réduit significativement l'incidence des événements digestifs. Les deux molécules partagent un profil de sécurité cohérent avec la classe des incrétino-mimétiques.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= TABLEAU RECAP ========================= -->
+<section class="bloc">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">07 / RÉCAPITULATIF</div>
+        <h2 class="section-title">Vue d'ensemble.</h2>
+      </div>
+      <p class="section-desc">Synthèse des caractéristiques clés pour orienter le choix en fonction du profil patient et du stade clinique.</p>
+    </div>
+
+    <div class="final-table">
+      <div class="final-row header">
+        <div></div>
+        <div class="r">Retatrutide</div>
+        <div class="t">Tirzepatide</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Code recherche</div>
+        <div class="v mono" style="color:var(--retatrutide)">LY3437943</div>
+        <div class="v mono" style="color:var(--tirzepatide)">LY3298176</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Cibles moléculaires</div>
+        <div class="v">GIP · GLP-1 · Glucagon</div>
+        <div class="v">GIP · GLP-1</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Perte de poids max</div>
+        <div class="v" style="color:var(--retatrutide)">−24,2% à 48 sem</div>
+        <div class="v" style="color:var(--tirzepatide)">−22,5% à 72 sem</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Réduction HbA1c max</div>
+        <div class="v">−2,02%</div>
+        <div class="v">−2,08%</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Fréquence d'injection</div>
+        <div class="v">1× / semaine SC</div>
+        <div class="v">1× / semaine SC</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Dose d'entretien max</div>
+        <div class="v">12 mg</div>
+        <div class="v">15 mg</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Essai pivot</div>
+        <div class="v">TRIUMPH phase 2/3</div>
+        <div class="v">SURMOUNT 1-5</div>
+      </div>
+      <div class="final-row">
+        <div class="k">Statut réglementaire</div>
+        <div class="v">En développement <span class="tag tag-investigational">PHASE 3</span></div>
+        <div class="v">FDA · EMA <span class="tag tag-approved">APPROUVÉ</span></div>
+      </div>
+      <div class="final-row">
+        <div class="k">Noms commerciaux</div>
+        <div class="v">— (investigationnel)</div>
+        <div class="v">Mounjaro · Zepbound</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">GP</div>
+          <div class="brand-text">General Pharmaceuticals</div>
+        </div>
+        <div class="txt">
+          Peptides de qualité recherche. Ce comparatif synthétise des données publiées dans des revues à comité de lecture (NEJM 2022, 2023 ; The Lancet 2023) pour fins pédagogiques.
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Sources</h4>
+        <ul>
+          <li><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2301972" target="_blank" rel="noopener">Jastreboff et al. NEJM 2023</a></li>
+          <li><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" target="_blank" rel="noopener">Jastreboff et al. NEJM 2022</a></li>
+          <li><a href="https://clinicaltrials.gov/study/NCT04184622" target="_blank" rel="noopener">NCT04184622 · SURMOUNT-1</a></li>
+          <li><a href="https://clinicaltrials.gov/study/NCT05931367" target="_blank" rel="noopener">NCT05931367 · TRIUMPH</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#mecanisme">Mécanisme</a></li>
+          <li><a href="#efficacite">Efficacité</a></li>
+          <li><a href="#glycemie">Glycémie</a></li>
+          <li><a href="#posologie">Posologie</a></li>
+          <li><a href="#effets">Effets</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 GENERAL PHARMACEUTICALS · COMPARATIF INFORMATIF</div>
+      <div>BUILD · 2026.04.20 · FR</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============ TOGGLE A/B ============
+const MOL_DATA = {
+  r: {
+    class: 'Triple agoniste',
+    classDesc: 'Premier-en-classe GIP/GLP-1/GCG',
+    mass: '≈ 4,9 kDa',
+    massDesc: 'Peptide synthétique 39 AA',
+    admin: 'Sous-cutanée',
+    adminDesc: '1× par semaine · pré-rempli',
+    status: 'Phase 3',
+    statusDesc: 'TRIUMPH · Eli Lilly'
+  },
+  t: {
+    class: 'Double agoniste',
+    classDesc: 'GIP/GLP-1 incrétino-mimétique',
+    mass: '≈ 4,8 kDa',
+    massDesc: 'Peptide synthétique 39 AA',
+    admin: 'Sous-cutanée',
+    adminDesc: '1× par semaine · pré-rempli',
+    status: 'Commercialisé',
+    statusDesc: 'Mounjaro / Zepbound · FDA + EMA'
+  }
+};
+
+const toggleBtns = document.querySelectorAll('.toggle-btn');
+const molDetail = document.getElementById('molDetail');
+toggleBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    toggleBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const mol = btn.dataset.mol;
+    const data = MOL_DATA[mol];
+    const color = mol === 'r' ? 'var(--retatrutide)' : 'var(--tirzepatide)';
+    molDetail.querySelectorAll('[data-field]').forEach(el => {
+      const field = el.dataset.field;
+      if (data[field] !== undefined) el.textContent = data[field];
+      if (el.classList.contains('val')) el.style.color = color;
+    });
+  });
+});
+// initialize colors
+document.querySelector('.toggle-btn[data-mol="r"]').click();
+
+// ============ DOSE SLIDER ============
+// 5 discrete dose points
+const DOSE_POINTS = [
+  { label: '1 mg',     mgR: 1,  mgT: null,
+    lossR: 8.7,  lossT: null,
+    kgR: '≈ 9 kg sur 105 kg initial',
+    kgT: 'Dose non évaluée (min tirzepatide = 2,5 mg)',
+    noteR: 'NEJM 2023 · LS mean',
+    noteT: 'Tirzepatide démarre à 2,5 mg'
+  },
+  { label: '4 mg',     mgR: 4,  mgT: null,
+    lossR: 17.1, lossT: null,
+    kgR: '≈ 18 kg sur 105 kg initial',
+    kgT: 'Dose non évaluée dans SURMOUNT-1',
+    noteR: 'NEJM 2023 · LS mean',
+    noteT: 'Tirzepatide évalué à 5 / 10 / 15 mg'
+  },
+  { label: '5 mg',     mgR: null, mgT: 5,
+    lossR: null, lossT: 15.0,
+    kgR: 'Dose non évaluée dans phase 2 obésité',
+    kgT: '≈ 16 kg sur 105 kg initial',
+    noteR: 'Rétatrutide évalué à 1/4/8/12 mg',
+    noteT: 'SURMOUNT-1 · 72 sem'
+  },
+  { label: '8-10 mg',  mgR: 8,  mgT: 10,
+    lossR: 22.8, lossT: 19.5,
+    kgR: '≈ 24 kg sur 105 kg initial',
+    kgT: '≈ 20 kg sur 105 kg initial',
+    noteR: 'Dose 8 mg · NEJM 2023',
+    noteT: 'Dose 10 mg · SURMOUNT-1'
+  },
+  { label: '12-15 mg', mgR: 12, mgT: 15,
+    lossR: 24.2, lossT: 22.5,
+    kgR: '≈ 25 kg sur 105 kg initial',
+    kgT: '≈ 24 kg sur 105 kg initial',
+    noteR: 'Dose max · NEJM 2023',
+    noteT: 'Dose max · NEJM 2022'
+  }
+];
+
+const slider = document.getElementById('doseSlider');
+const doseValue = document.getElementById('doseValue');
+const doseFill = document.getElementById('doseFill');
+const ticks = document.querySelectorAll('.dose-tick');
+const lossRnum = document.getElementById('lossRnum');
+const lossTnum = document.getElementById('lossTnum');
+const lossRkg = document.getElementById('lossRkg');
+const lossTkg = document.getElementById('lossTkg');
+const noteR = document.getElementById('noteR');
+const noteT = document.getElementById('noteT');
+
+function renderDose(idx) {
+  const d = DOSE_POINTS[idx];
+  doseValue.textContent = d.label.replace(' mg','');
+  doseFill.style.width = (idx / 4 * 100) + '%';
+  ticks.forEach(t => t.classList.toggle('active', +t.dataset.idx === idx));
+
+  lossRnum.textContent = d.lossR !== null ? d.lossR.toString().replace('.',',') : '—';
+  lossTnum.textContent = d.lossT !== null ? d.lossT.toString().replace('.',',') : '—';
+  document.querySelector('.dose-proj.r .loss .pc').textContent = d.lossR !== null ? '%' : '';
+  document.querySelector('.dose-proj.t .loss .pc').textContent = d.lossT !== null ? '%' : '';
+  lossRkg.textContent = d.kgR;
+  lossTkg.textContent = d.kgT;
+  noteR.textContent = d.noteR;
+  noteT.textContent = d.noteT;
+}
+slider.addEventListener('input', e => renderDose(+e.target.value));
+ticks.forEach(t => {
+  t.addEventListener('click', () => {
+    const idx = +t.dataset.idx;
+    slider.value = idx;
+    renderDose(idx);
+  });
+});
+renderDose(1);
+</script>
+
+</body>
+</html>
