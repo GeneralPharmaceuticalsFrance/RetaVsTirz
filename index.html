@@ -50,6 +50,43 @@
 
   .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 
+  /* Shop CTA button */
+  .shop-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 18px; border-radius: 999px;
+    background: linear-gradient(135deg, #4da6ff, #2d7fd6);
+    color: white; text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 13px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px rgba(77,166,255,0.35);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .shop-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(77,166,255,0.5); }
+  .shop-cta .arrow { transition: transform 0.2s; }
+  .shop-cta:hover .arrow { transform: translateX(3px); }
+  .shop-cta.lg { padding: 16px 28px; font-size: 15px; border-radius: 14px; }
+
+  .shop-banner {
+    margin: 40px 0; padding: 40px;
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    background:
+      linear-gradient(135deg, rgba(77,166,255,0.12), rgba(110,230,255,0.04)),
+      linear-gradient(180deg, rgba(15,29,54,0.6), rgba(10,20,38,0.3));
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .shop-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 400px 200px at 85% 50%, rgba(77,166,255,0.2), transparent);
+    pointer-events: none;
+  }
+  .shop-banner-head { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--brand-bright); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+  .shop-banner-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; }
+  .shop-banner-sub { color: var(--ink-dim); font-size: 14px; margin-top: 10px; max-width: 520px; }
+  .shop-url { font-family: 'JetBrains Mono', monospace; color: var(--brand-bright); }
+
   /* ===== NAV ===== */
   nav.topbar {
     display: flex; align-items: center; justify-content: space-between;
@@ -438,15 +475,104 @@
     font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint);
   }
 
-  @media (max-width: 900px) {
-    .hero-grid, .mech-grid, .gly-grid, .poso-grid, .footer-grid { grid-template-columns: 1fr; }
-    .mol-detail, .chart-stats { grid-template-columns: repeat(2, 1fr); }
-    .dose-projections { grid-template-columns: 1fr; }
-    .final-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 20px; }
-    .section-head { grid-template-columns: 1fr; gap: 16px; }
-    .section-desc { text-align: left; justify-self: start; }
-    .se-row { grid-template-columns: 1fr; gap: 8px; }
-    .se-note { text-align: left; }
+  /* ============= RESPONSIVE ============= */
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-img-wrap { max-width: 500px; margin: 0 auto; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    nav.topbar { padding: 14px 20px; gap: 12px; flex-wrap: wrap; }
+    .brand-text { font-size: 12px; }
+    .brand-text .dim { display: none; }
+    .nav-status { font-size: 10px; }
+
+    .hero { padding: 48px 0 32px; }
+    h1.hero-title { font-size: 44px; line-height: 1; margin-bottom: 20px; }
+    .hero-sub { font-size: 15px; margin-bottom: 28px; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; }
+    .hero-stat .num { font-size: 28px; }
+    .hero-stat .lbl { font-size: 10px; }
+
+    .mol-selector { padding: 20px; margin: 48px 0; }
+    .mol-selector-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .toggle-ab { grid-template-columns: 1fr; }
+    .toggle-btn { padding: 16px 18px; }
+    .toggle-btn .tb-name { font-size: 20px; }
+    .mol-detail { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .mol-card { padding: 14px; }
+    .mol-card .val { font-size: 16px; }
+    .mol-card .desc { font-size: 11px; }
+
+    section.bloc { padding: 48px 0; }
+    .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 28px; }
+    .section-title { font-size: 28px; }
+    .section-desc { text-align: left; justify-self: start; font-size: 14px; }
+
+    .mech-grid, .gly-grid, .poso-grid { grid-template-columns: 1fr; gap: 16px; }
+    .mech-card, .poso-card { padding: 22px; }
+    .mech-card-title { font-size: 19px; }
+    .receptor { grid-template-columns: 60px 1fr auto; gap: 10px; padding: 12px; }
+    .receptor-code { font-size: 11px; }
+    .receptor-name { font-size: 12px; }
+    .receptor-name .sub { font-size: 10px; }
+
+    .chart-wrap { padding: 20px; }
+    .chart-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .chart-title { font-size: 17px; }
+    .legend { flex-wrap: wrap; gap: 12px; font-size: 11px; }
+    .chart-svg { min-width: 600px; }
+    .chart-svg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .chart-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .chart-stat { padding: 14px; }
+    .chart-stat .row .v { font-size: 20px; }
+
+    .gly-card { padding: 24px; }
+    .gly-big { font-size: 52px; }
+    .gly-big .unit { font-size: 22px; }
+    .gly-meta { grid-template-columns: 1fr; gap: 12px; }
+
+    .dose-panel { padding: 24px; }
+    .dose-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .dose-title { font-size: 18px; }
+    .dose-ticks { font-size: 10px; flex-wrap: wrap; gap: 4px; }
+    .dose-tick { padding: 3px 6px; }
+    .dose-projections { grid-template-columns: 1fr; gap: 12px; }
+    .dose-proj { padding: 18px; }
+    .dose-proj .loss { font-size: 42px; }
+    .dose-proj .loss .pc { font-size: 18px; }
+
+    .poso-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .step { grid-template-columns: 22px 52px 1fr auto; gap: 8px; }
+    .step-dose { font-size: 13px; }
+    .step-tag { font-size: 10px; padding: 2px 6px; }
+
+    .se-panel { padding: 22px; }
+    .se-head { flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 20px; }
+    .se-row { grid-template-columns: 1fr; gap: 8px; padding: 14px 0; }
+    .se-label { font-size: 13px; }
+    .se-note { text-align: left; font-size: 10px; }
+
+    .final-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; font-size: 13px; }
+    .final-row.header { padding: 20px 18px; font-size: 14px; grid-template-columns: 1fr; gap: 4px; }
+    .final-row.header > div:first-child { display: none; }
+
+    .shop-banner { grid-template-columns: 1fr; padding: 24px; gap: 20px; text-align: center; margin: 28px 0; }
+    .shop-banner-sub { margin: 10px auto 0; }
+    .shop-banner-title { font-size: 22px; }
+    .shop-cta.lg { padding: 14px 22px; font-size: 14px; width: 100%; justify-content: center; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  }
+
+  @media (max-width: 420px) {
+    h1.hero-title { font-size: 36px; }
+    .section-title { font-size: 24px; }
+    .hero-stats { gap: 16px; }
+    .hero-stat { flex: 1 1 45%; }
   }
 </style>
 </head>
@@ -464,7 +590,9 @@
     <a href="#posologie">Posologie</a>
     <a href="#effets">Effets</a>
   </div>
-  <div class="nav-status"><span class="pulse"></span> DATA • TRIUMPH / SURMOUNT</div>
+  <a class="shop-cta" href="https://fr.gporders.com" target="_blank" rel="noopener">
+    Commander <span class="arrow">→</span>
+  </a>
 </nav>
 
 <!-- ========================= HERO ========================= -->
@@ -1015,6 +1143,20 @@
   </div>
 </section>
 
+<!-- ========================= SHOP BANNER ========================= -->
+<div class="container">
+  <div class="shop-banner">
+    <div style="position: relative; z-index: 1">
+      <div class="shop-banner-head">◆ Disponible · Qualité recherche</div>
+      <div class="shop-banner-title">Retatrutide &amp; Tirzepatide<br />par General Pharmaceuticals</div>
+      <div class="shop-banner-sub">Flacons 10 mg · Lyophilisés · Expédition sécurisée. Commandez sur <span class="shop-url">fr.gporders.com</span></div>
+    </div>
+    <a class="shop-cta lg" href="https://fr.gporders.com" target="_blank" rel="noopener" style="position: relative; z-index: 1">
+      Visiter le shop <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
 <!-- ========================= TABLEAU RECAP ========================= -->
 <section class="bloc">
   <div class="container">
@@ -1103,6 +1245,14 @@
         </ul>
       </div>
       <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="https://fr.gporders.com" target="_blank" rel="noopener">fr.gporders.com</a></li>
+          <li><a href="https://fr.gporders.com" target="_blank" rel="noopener">Commander Retatrutide</a></li>
+          <li><a href="https://fr.gporders.com" target="_blank" rel="noopener">Commander Tirzepatide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" style="display:none">
         <h4>Navigation</h4>
         <ul>
           <li><a href="#mecanisme">Mécanisme</a></li>
